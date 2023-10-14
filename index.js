@@ -1,4 +1,5 @@
-import express, { json } from "express";
+import express from "express";
+import cors from 'cors';
 import { readFile, writeFile } from "fs"
 
 const app = express()
@@ -22,6 +23,7 @@ function getCurrentFormattedDate() {
 }
 
 app.use(express.json())
+app.use(cors())
 
 app.get('/daily-logs', (req, res) => {
   readFile('./data.json', (err, data) => {
